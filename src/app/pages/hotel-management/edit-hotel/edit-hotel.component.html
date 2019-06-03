@@ -1,0 +1,313 @@
+<app-content-header [title]="'Edit Hotel'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'">
+</app-content-header>
+<form class="example-form " [formGroup]="hotelForm" (ngSubmit)="onEditHotel()">
+    <!-- <mat-label class="contact_person">Add Hotel Details</mat-label> -->
+    <mat-card>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Hotel ID</mat-label>
+                <input type="number" matInput placeholder="Hotel ID" formControlName="hotel_id" readonly>
+                <mat-icon matSuffix>vpn_key
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Hotel Address</mat-label>
+                <input type="text" matInput placeholder="Hotel Address" formControlName="address_" required>
+                <mat-error *ngIf="hotelForm.get('address_').hasError('required')">Address is required</mat-error>
+                <mat-icon matSuffix>my_location
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Hotel Name</mat-label>
+                <input type="text" matInput placeholder="Hotel Name" formControlName="hotel_name" required>
+                <mat-error *ngIf="hotelForm.get('hotel_name').hasError('required') ">Hotel Name is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('hotel_name').hasError('pattern')">You Can't Enter Number and Any
+                    Special Charater In hotel Name</mat-error>
+                <mat-icon matSuffix>business
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Landmark</mat-label>
+                <input type="text" matInput placeholder="Landmark" formControlName="landmark_" required>
+                <mat-error *ngIf="hotelForm.get('landmark_').hasError('required') ">Landmark is required</mat-error>
+                <mat-icon matSuffix>room
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Hotel Owner Name</mat-label>
+                <input type="text" matInput placeholder="Hotel Owner Name" formControlName="owner_name" required>
+                <mat-error *ngIf="hotelForm.get('owner_name').hasError('required') ">Hotel Owner Name is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('owner_name').hasError('pattern')">
+                    You Can't Enter Number and Any Special Charater In Owner Name
+                </mat-error>
+                <mat-icon matSuffix>supervised_user_circle
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Pincode</mat-label>
+                <input type="text" matInput placeholder="Pincode" formControlName="pincode_" required>
+                <mat-error *ngIf="hotelForm.get('pincode_').hasError('required')">Pincode is required</mat-error>
+                <mat-error *ngIf="hotelForm.get('pincode_').hasError('max')">Pincode is Not Greter Then 6 digits
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('pincode_').hasError('min')">Pincode is Not Less Then 6 digits
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('pincode_').hasError('pattern')">
+                    You Can't Enter Charater and Any Special Charater In Pincode
+                </mat-error>
+                <mat-icon matSuffix>person_pin
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Contact Number</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input type="text" matInput placeholder="Telephone" formControlName="auth_contact_no" required>
+                <mat-error *ngIf="hotelForm.get('auth_contact_no').hasError('required')">Contact No is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('auth_contact_no').hasError('max')">Contact No is Not Greter Then 10
+                    digits</mat-error>
+                <mat-error *ngIf="hotelForm.get('auth_contact_no').hasError('min')">Contact No is Not Less Then 10
+                    digits</mat-error>
+                <mat-error *ngIf="hotelForm.get('auth_contact_no').hasError('pattern')">
+                    You Can't Enter Charater and Any Special Charater In Contact No
+                </mat-error>
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="name">
+                    <mat-option>None</mat-option>
+                    <mat-option [value]="item.country_id" *ngFor="let item of local_country_arr"
+                        (click)="onChangeCountry()">
+                        {{item.name}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>flag</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="mail" matInput placeholder="Enter your email" formControlName="email_" required>
+                <mat-error *ngIf="hotelForm.get('email_').hasError('required')">Email is required</mat-error>
+                <mat-error *ngIf="hotelForm.get('email_').hasError('pattern')">Enter Correct Email
+                    Ex-pritam@gmail.com</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>State</mat-label>
+                <mat-select formControlName="stateName">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of local_state_arr" [value]="item.state_id"
+                        (click)="onChangeState()">
+                        {{item.name}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>outlined_flag</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-radio-group fxFlex="45%" formControlName="category_" aria-label="Select an option">
+                <mat-label>Rating</mat-label><br>
+                <mat-radio-button [value]="1">1 Star </mat-radio-button>
+                <mat-radio-button [value]="2">2 Star </mat-radio-button>
+                <mat-radio-button [value]="3">3 Star </mat-radio-button>
+                <mat-radio-button [value]="4">4 Star </mat-radio-button>
+                <mat-radio-button [value]="5">5 Star </mat-radio-button>
+            </mat-radio-group>
+            <mat-form-field class="fullwidth" fxFlex="45%" appearance="outline">
+                <mat-label>City</mat-label>
+                <mat-select formControlName="city_id">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of local_city_arr" [value]="item.city_id">{{item.name}}
+                    </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>outlined_flag</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Group Name</mat-label>
+                <input type="text" matInput formControlName="group_name" placeholder="Group Name">
+                <mat-error *ngIf="hotelForm.get('group_name').hasError('required') ">Hotel Name is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('group_name').hasError('pattern')">You Can't Enter Number and Any
+                    Special Charater In Group Name</mat-error>
+                <mat-icon matSuffix>supervised_user_circle
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Hotel Website</mat-label>
+                <input type="url" matInput formControlName="website_" placeholder="Hotel Website">
+                <mat-error *ngIf="hotelForm.get('website_').hasError('required') ">Hotel Website is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('website_').hasError('pattern')">Enter Proper Website url
+                    Ex-ftp/http/https://www.website.com</mat-error>
+                <mat-icon matSuffix>http
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Copyright By</mat-label>
+                <input type="text" matInput placeholder="Copyright By" formControlName="copyright_by">
+                <mat-error *ngIf="hotelForm.get('copyright_by').hasError('required') ">Copyright is required
+                </mat-error>
+                <mat-icon matSuffix>copyright
+                </mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Ownership Type</mat-label>
+                <mat-select formControlName="ownership_type">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let type of types,let i=index" [value]="i">{{type}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>whatshot</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <div fxFlex="45%">
+                <img [src]="logoUrl" *ngIf="selectLogo" [hidden]=flagLogo style="width:200px;height:200px">
+                <img src="http://localhost:3000/images/uploads/{{logo_pathTemp}}" *ngIf="!selectLogo"  style="width:200px;height:200px"><br>  
+
+                <input type="file" style="display: none;" #inputLogo accept="image/*" formControlName="logo_path" (change)="onLogoFileSelected($event.target.files)">
+                <button type="button" class="matImage" (click)="inputLogo.click()">
+                    Select Hotel Logo
+                    <mat-icon matSuffix>cloud_upload</mat-icon>
+                </button>
+            </div>
+            <div fxFlex="45%">
+                <img [src]="imageUrl" *ngIf="selectImage" [hidden]=flagImage style="width:200px;height:200px">
+                <img src="http://localhost:3000/images/hotelImages/{{image_pathTemp}}" style="width:200px;height:200px" *ngIf="!selectImage"><br>
+                <input type="file" style="display: none" #inputImage accept="image/*" formControlName="image_path" (change)="onImageFileSelected($event.target.files)">
+                <button type="button" class="matImage" (click)="inputImage.click()">
+                    Select Hotel Image
+                    <mat-icon matSuffix>cloud_upload</mat-icon>
+                </button>  
+            </div>
+        </div>
+    </mat-card>
+    <br>
+    <mat-card>
+        <div>
+             <div class="badge-promo">
+                    <span class="badge-promo-content">
+                        Contact Person Email
+                    </span>
+             </div>
+        </div>
+        <!--<mat-label class="contact_person">Add Contact person Details</mat-label>-->
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input type="text" matInput formControlName="contact_fname" placeholder="First Namee">
+                <mat-error *ngIf="hotelForm.get('contact_fname').hasError('required') ">First Name is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_fname').hasError('pattern')">You Can't Enter Number and Any
+                    Special Charater In First Name</mat-error>
+                <mat-icon matSuffix>person
+                </mat-icon>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput formControlName="contact_lname" placeholder="Last Name">
+                <mat-error *ngIf="hotelForm.get('contact_lname').hasError('required') ">Last Name is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_lname').hasError('pattern')">You Can't Enter Number and Any
+                    Special Charater In Last Name</mat-error>
+                <mat-icon matSuffix>person
+                </mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Contact Person Number</mat-label>
+                <span matPrefix>+91 &nbsp;</span>
+                <input type="text" matInput formControlName="contact_number" placeholder="Telephone">
+                <mat-error *ngIf="hotelForm.get('contact_number').hasError('required')">Contact No is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_number').hasError('max')">Contact No is Not Greter Then 10
+                    digits</mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_number').hasError('min')">Contact No is Not Less Then 10
+                    digits</mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_number').hasError('pattern')">
+                    You Can't Enter Charater and Any Special Charater In Contact No
+                </mat-error>
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Contact Person Email</mat-label>
+                <input type="mail" matInput placeholder="Enter your email" formControlName="contact_email_" required>
+                <mat-error *ngIf="hotelForm.get('contact_email_').hasError('required')">Email is required
+                </mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_email_').hasError('pattern')">Enter Correct Email
+                    Ex-pritam@gmail.com</mat-error>
+                <mat-error></mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Designation</mat-label>
+                <input type="text" formControlName="contact_designation_" matInput placeholder="Designation">
+                <mat-error *ngIf="hotelForm.get('contact_designation_').hasError('required') ">Designation is
+                    required</mat-error>
+                <mat-error *ngIf="hotelForm.get('contact_designation_').hasError('pattern')">You Can't Enter
+                    Number and Any Special Charater In Designation</mat-error>
+                <mat-icon matSuffix>work</mat-icon>
+            </mat-form-field>
+            <div fxFlex="45%"></div>
+        </div>
+
+    </mat-card><br>
+    <mat-card>
+        <div>
+             <div class="badge-promo">
+                    <span class="badge-promo-content">
+                        Add Contact Details
+                    </span>
+             </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Package Type</mat-label>
+                <mat-select formControlName="sub_id">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of local_package_arr;let i=index" [value]="item.sub_type_id"
+                        (click)="onChangePackage()">{{item.sub_type}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>outlined_flag</mat-icon>
+            </mat-form-field>
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Package Name</mat-label>
+                <mat-select formControlName="Package_Name">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let item of local_sub_arr;let i=index" [value]="item.subscription"
+                        (click)="onChangeSub()">{{item.subscription}}</mat-option>
+                </mat-select>
+                <mat-icon matSuffix>event_note</mat-icon>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+            <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+                <mat-label>Paybill Charges</mat-label>
+                <input type="text" matInput placeholder="Paybill Charges" formControlName="Paybill_Charges" readonly>
+                <mat-icon matSuffix>attach_money</mat-icon>
+            </mat-form-field> 
+            <div fxFlex="45%">
+
+            </div>
+        </div>
+    
+        <button mat-raised-button color="primary" [disabled]="hotelForm.invalid">Edit</button>
+        <button mat-raised-button color="secondary" (click)="onBack()">Cancel</button>
+    </mat-card>
+</form>

@@ -1,0 +1,87 @@
+<app-content-header     
+    [title]="'List Of Hotels'" 
+    [hideBreadcrumb]="false"
+    [hasBgImage]="true" 
+    [class]="'pb-5'"></app-content-header>
+    <div class="container">
+      <form [formGroup]="dropdown">
+        <mat-form-field *ngIf="packageTypeShow">
+          <mat-label>Package Type</mat-label>
+          <mat-select formControlName="PackageType">
+            <mat-option (click)="packageTypeNotSelected()">--</mat-option>
+            <mat-option
+              (click)="packageTypeSelected()"
+              *ngFor="let item of packageType"
+              [value]="item.sub_type_id"
+            >
+              {{ item.sub_type }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        &nbsp;
+        <mat-form-field>
+          <mat-label>Package Name</mat-label>
+          <mat-select formControlName="PackageName">
+            <mat-option (click)="packageNameNotSelected()" *ngIf="packageNameShow"
+              >--</mat-option
+            >
+            <mat-option *ngIf="!packageNameShow"
+              >Please Select Package Type First</mat-option
+            >
+            <mat-option
+              (click)="packageNameSelected()"
+              *ngFor="let item of packageName"
+              [value]="item.Package_Name"
+            >
+              {{ item.Package_Name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="container">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="Hotel_Id">
+          <th mat-header-cell *matHeaderCellDef>Hotel ID</th>
+          <td mat-cell *matCellDef="let element">{{ element.Hotel_Id }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Hotel_Name">
+          <th mat-header-cell *matHeaderCellDef>Hotel Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.Hotel_Name }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Contact_No">
+          <th mat-header-cell *matHeaderCellDef>Contact No</th>
+          <td mat-cell *matCellDef="let element">{{ element.Contact_No }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Subscribed_From">
+          <th mat-header-cell *matHeaderCellDef>Subscribed From</th>
+          <td mat-cell *matCellDef="let element">{{ element.Subscribed_From |date}}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="City">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let element">{{ element.City }}</td>
+        </ng-container>
+    
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef>Status</th>
+          <td mat-cell *matCellDef="let element">
+            <h6 *ngIf="element.Status == 1">Active</h6>
+            <h6 *ngIf="element.Status != 1">In-Active</h6>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    
+       <mat-paginator
+        [pageSizeOptions]="[2, 10, 20]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+    
+

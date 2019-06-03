@@ -1,0 +1,80 @@
+<app-content-header [title]="'Package List'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'">
+</app-content-header>
+<button (click)="toAddPage()" mat-mini-fab color="primary" class="add">
+  <mat-icon>add</mat-icon>
+</button>
+<mat-form-field class="formField">
+  <input matInput [matDatepicker]="picker" class="search" data-date-format="YYYY-MM-DD" placeholder="Choose a date for Filter"
+    (dateChange)="valueChange($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker disabled="false" #picker></mat-datepicker>
+</mat-form-field>
+<button mat-button color="primary" (click)="toHotelListPage()">Hotel List</button>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="Package_Name">
+    <th mat-header-cell *matHeaderCellDef> Package Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.Package_Name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Created_On">
+    <th mat-header-cell *matHeaderCellDef> Created On </th>
+    <td mat-cell *matCellDef="let element"> {{element.Created_On}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Created_By">
+    <th mat-header-cell *matHeaderCellDef> Created By </th>
+    <td mat-cell *matCellDef="let element"> {{element.Created_By}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="No_Of_Hotels">
+    <th mat-header-cell *matHeaderCellDef> No Of Hotels </th>
+    <td mat-cell *matCellDef="let element"> {{element.No_Of_Hotels}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action">
+    <th mat-header-cell></th>
+    <th mat-header-cell *matHeaderCellDef></th>
+    <th mat-header-cell></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary">
+        <mat-icon (click)="onViewPage(element)" aria-label="Example icon-button with a heart icon">linear_scale
+        </mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action1">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="accent">
+        <mat-icon (click)="onEditPage(element)" aria-label="Example icon-button with a heart icon">edit</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Action2">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="warn">
+        <mat-icon (click)="delete(element)" aria-label="Example icon-button with a heart icon">delete</mat-icon>
+      </button>
+      <!-- <button mat-dialog-actions (click)="openConfirmationDialog(element)" type="button" class="btn btn-primary" cdkFocusInitial>
+        hello
+      </button> -->
+
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15,20,25]" showFirstLastButtons></mat-paginator>
+
+
+
+<div fxLayout="row" fxLayoutAlign="end center">
+  
+</div>

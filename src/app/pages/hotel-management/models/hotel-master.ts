@@ -1,0 +1,41 @@
+export class HotelMaster {
+
+    public constructor(
+        public hotel_id: number,
+        public hotel_name: string,
+        public auth_contact_no: number,
+        public sub_id: number,
+        public sub_from: Date,
+        public sub_to: Date,
+        public city_id: number,
+        public status_id: number,
+        public client_status: number,
+        public owner_name: string,
+        public email_: string,
+        public category_: number,
+        public group_name: string,
+        public copyright_by: string,
+        public ownership_type: number,
+        public address_: string,
+        public landmark_: string,
+        public pincode_: number,
+        public website_: string,
+        public logo_path: File,
+        public contact_fname: string,
+        public contact_lname: string,
+        public contact_designation_: string,
+        public contact_email_: string,
+        public contact_number: number,
+        public created_by: number,
+        public image_path: string,
+        public subscription: string,
+        public sub_type: string,
+        public city_name: string,
+        public state_name: string,
+        public country_name: string,
+        public state_id: number,
+        public country_id: number,
+        public sub_type_id: number
+    ) { }
+
+}

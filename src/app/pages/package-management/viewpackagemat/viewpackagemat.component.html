@@ -1,0 +1,72 @@
+<app-content-header [title]="'View Packages'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'">
+</app-content-header>
+
+<div fxLayout="column" class="p-2">
+  <div class="p-2">
+    <mat-card>
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-subtitle>
+          <h2>View Package</h2>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <hr>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center">
+        <form [formGroup]="hotelViewForm" class="example-form">
+          <mat-form-field>
+            <mat-label>Package Type</mat-label>
+            <mat-select formControlName="sub_type">
+              <mat-option *ngFor="let item of packageType" [value]=" item.sub_type_id ">
+                {{ item.sub_type }}
+              </mat-option>
+            </mat-select>
+
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Package Name" required formControlName="subscription" />
+
+          </mat-form-field>
+          <br />
+
+          <!-- <section class="example-section" formArrayName="all_service"
+            *ngFor="let item of getService.controls;let i= index">
+            <mat-checkbox class="example-margin" formControlName="{{i}}" value="{{hotelServiceArray[i].service_id}}"
+              disabled="true">{{hotelServiceArray[i].service_name}}</mat-checkbox>
+          </section> -->
+         
+         
+              <div>
+            <section formArrayName="all_service" *ngFor="let item of getService.controls;let i= index">
+              <div *ngIf="i%2==0 && i<getService.controls.length" class="container" fxLayout="row" fxLayout.xs="column"
+                fxLayoutWrap fxLayoutGap=".35%" fxLayoutAlign="right">
+                <div fxFlex="58%">
+                  <mat-checkbox class="example-margin" formControlName="{{i}}"
+                    value="{{hotelServiceArray[i].service_id}}" disabled="true">{{hotelServiceArray[i].service_name}}
+                  </mat-checkbox>
+                </div>
+                <div fxFlex="50%">
+                  <mat-checkbox *ngIf="i+1<getService.controls.length" class="example-margin" formControlName="{{i+1}}"
+                    value="{{hotelServiceArray[i+1].service_id}}" disabled="true">
+                    {{hotelServiceArray[i+1].service_name}}</mat-checkbox>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+
+
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Payable Amount" required formControlName="payable_amt" type="number" />
+
+          </mat-form-field>
+
+          <br />
+          <button class=" layout-align-end-start" mat-raised-button color="primary"
+            (click)="backToPackage()">back</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

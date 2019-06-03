@@ -1,0 +1,31 @@
+<app-content-header 
+    [icon]="'supervisor_account'" 
+    [title]="'Demo Request'" 
+    [desc]="'View information about the users, search, add, edit or delete any user.'"
+    [hideBreadcrumb]="false"
+    [hasBgImage]="true" 
+    [class]="'pb-5'"></app-content-header>
+
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" class="px-2 user-toolbar">
+    <div fxLayout="row">
+        <button mat-icon-button (click)="openUserDialog(null)">
+            <mat-icon>person_add</mat-icon>
+        </button>
+        <button mat-icon-button (click)="showSearch = !showSearch" class="mx-2">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+    <form class="user-search" [class.show]="showSearch">
+        <mat-form-field class="user-search-input">
+            <input matInput placeholder="Search user by name..." [(ngModel)]="searchText" name="search">
+        </mat-form-field>
+    </form>
+    <div fxLayout="row">
+        <button mat-icon-button (click)="changeView('grid')" class="mx-2">
+            <mat-icon>view_module</mat-icon>
+        </button>
+        <button mat-icon-button (click)="changeView('list')">
+            <mat-icon>view_list</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

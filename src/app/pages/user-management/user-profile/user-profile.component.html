@@ -1,0 +1,9 @@
+<app-content-header [title]="'Profile'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'">
+</app-content-header>
+<img src="http://localhost:3000/images/profile/{{userImage}}" class="user_photo">
+<h2>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{id}}</h2>
+<h2>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :&nbsp;&nbsp;&nbsp;{{name}}</h2>
+<h2>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :&nbsp;&nbsp;&nbsp;{{email}}</h2>
+<h2>Contact&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;{{contact}}</h2>
+<button mat-raised-button color="primary" class="mat-elevation-z6 w-40 mt-3 edit" (click)="editProfiles()">Edit</button>
+

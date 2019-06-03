@@ -1,0 +1,205 @@
+<app-content-header [title]="'View Hotel'" [hideBreadcrumb]="false" [hasBgImage]="true" [class]="'pb-5'">
+</app-content-header>
+<form class="example-form " [formGroup]="hotelForm">
+  <mat-card>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Hotel ID</mat-label>
+        <input type="number" matInput placeholder="Hotel ID"  formControlName="hotel_id" readonly>
+        <mat-icon matSuffix>vpn_key
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Hotel Address</mat-label>
+        <input type="text" matInput placeholder="Hotel Address" readonly formControlName="address_" required>
+        <mat-icon matSuffix>my_location
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Hotel Name</mat-label>
+        <input type="text" matInput readonly placeholder="Hotel Name" formControlName="hotel_name" required>
+        <mat-icon matSuffix>business
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Landmark</mat-label>
+        <input type="text" readonly matInput placeholder="Landmark" formControlName="landmark_" required>
+        <mat-icon matSuffix>room
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Hotel Owner Name</mat-label>
+        <input type="text" readonly matInput placeholder="Hotel Owner Name" formControlName="owner_name" required>
+        <mat-icon matSuffix>supervised_user_circle
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Pincode</mat-label>
+        <input type="text" readonly matInput placeholder="Pincode" formControlName="pincode_" required>
+        <mat-icon matSuffix>person_pin
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Contact Number</mat-label>
+        <span matPrefix>+91 &nbsp;</span>
+        <input type="text" readonly matInput placeholder="Telephone" formControlName="auth_contact_no" required>
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Country</mat-label>
+        <input type="text" matInput formControlName="name" readonly>
+        <mat-icon matSuffix>flag</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="mail" readonly matInput placeholder="Enter your email" formControlName="email_" required>
+
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>State</mat-label>
+        <input type="text" matInput formControlName="stateName" readonly>
+        <mat-icon matSuffix>outlined_flag</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-radio-group fxFlex="45%" formControlName="category_" aria-label="Select an option">
+        <mat-label>Rating</mat-label><br>
+        <mat-radio-button [value]="1">1 Star </mat-radio-button>
+        <mat-radio-button [value]="2">2 Star </mat-radio-button>
+        <mat-radio-button [value]="3">3 Star </mat-radio-button>
+        <mat-radio-button [value]="4">4 Star </mat-radio-button>
+        <mat-radio-button [value]="5">5 Star </mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field class="fullwidth" fxFlex="45%" appearance="outline">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName="city_id" readonly>
+        <mat-icon matSuffix>outlined_flag</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Group Name</mat-label>
+        <input type="text" readonly matInput formControlName="group_name" placeholder="Group Name">
+        <mat-icon matSuffix>supervised_user_circle
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Hotel Website</mat-label>
+        <input type="url" matInput formControlName="website_" placeholder="Hotel Website" readonly>
+        <mat-icon matSuffix>http
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Copyright By</mat-label>
+        <input type="text" readonly matInput placeholder="opyright By" formControlName="copyright_by">
+
+        <mat-icon matSuffix>copyright
+        </mat-icon>
+      </mat-form-field>
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Ownership Type</mat-label>
+        <input type="text" readonly matInput formControlName="ownership_type">
+        <mat-icon matSuffix>whatshot</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <div fxFlex="45%">
+        <mat-label>Hotel Logo </mat-label>
+        <img src="http://localhost:3000/images/uploads/{{logo_pathTemp}}" height="150px" width="150px">
+        <mat-icon matSuffix>cloud_upload</mat-icon>
+      </div>
+      <div fxFlex="45%">
+        <mat-label>Hotel Image </mat-label>
+        <img src="http://localhost:3000/images/hotelImages/{{image_pathTemp}}" height="150px" width="150px">
+        <mat-icon matSuffix>cloud_upload</mat-icon>
+      </div>
+    </div>
+  </mat-card>
+  <br>
+  <mat-card>
+    <mat-label class="contact_person">Add Contact person Details</mat-label>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput readonly formControlName="contact_fname" placeholder="First Namee">
+        <mat-icon matSuffix>person
+        </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="text" readonly matInput formControlName="contact_lname" placeholder="Last Name">
+        <mat-icon matSuffix>person
+        </mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Contact Person Number</mat-label>
+        <span matPrefix>+91 &nbsp;</span>
+        <input type="text" readonly matInput formControlName="contact_number" placeholder="Telephone">
+
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Contact Person Email</mat-label>
+        <input type="mail" readonly matInput placeholder="Enter your email" formControlName="contact_email_" required>
+
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Designation</mat-label>
+        <input type="text" readonly formControlName="contact_designation_" matInput placeholder="Designation">
+
+        <mat-icon matSuffix>work</mat-icon>
+      </mat-form-field>
+      <div fxFlex="45%"></div>
+    </div>
+
+  </mat-card><br>
+  <mat-card>
+    <mat-label class="contact_person">Add Contact Details</mat-label>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Package Type</mat-label>
+        <mat-select formControlName="sub_id">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let item of local_package_arr;let i=index" [value]="item.sub_type_id"
+            (click)="onChangePackage()">{{item.sub_type}}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix>outlined_flag</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Package Name</mat-label>
+        <input type="text" matInput formControlName="Package_Name" placeholder="Package Name">
+        <mat-icon matSuffix>event_note</mat-icon>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="5%" fxLayoutAlign="center">
+      <mat-form-field fxFlex="45%" class="fullwidth" appearance="outline">
+        <mat-label>Paybill Charges</mat-label>
+        <input type="number" matInput placeholder="Paybill Charges" formControlName="Paybill_Charges">
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+
+      <div fxFlex="45%"></div>
+    </div>
+    <button mat-raised-button color="secondary" (click)="onBack()">Back</button>
+  </mat-card>
+</form>
